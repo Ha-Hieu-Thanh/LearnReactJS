@@ -10,6 +10,15 @@ class MyComponent extends React.Component {
     age: 20,
   };
 
+  handleClick(event) {
+    console.log("Click me");
+  }
+
+  handleOnMouseOver(event) {
+    console.log("Mouse over");
+    // print x, y
+    console.log(event.pageX, event.pageY);
+  }
   // JSX (viet code js trong html)
   render() {
     return (
@@ -20,6 +29,8 @@ class MyComponent extends React.Component {
         <br />
         My age is {this.state.age}
         <br />
+        <button onMouseOver={this.handleOnMouseOver}>Hover me</button>
+        <button onClick={this.handleClick}>Click me</button>
         {/* {} to write js code */}
       </div>
     );
