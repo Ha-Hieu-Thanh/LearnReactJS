@@ -10,15 +10,21 @@ class MyComponent extends React.Component {
     age: 20,
   };
 
-  handleClick(event) {
+  handleClick = (event) => {
     console.log("Click me");
-  }
+    console.log(`My name is ${this.state.name}`);
 
-  handleOnMouseOver(event) {
+    let curAge = this.state.age;
+    curAge = curAge + 1;
+    this.setState({ age: curAge });
+  };
+
+  handleOnMouseOver = (event) => {
     console.log("Mouse over");
-    // print x, y
+
+    console.log(``); // print x, y
     console.log(event.pageX, event.pageY);
-  }
+  };
   // JSX (viet code js trong html)
   render() {
     return (
@@ -30,7 +36,13 @@ class MyComponent extends React.Component {
         My age is {this.state.age}
         <br />
         <button onMouseOver={this.handleOnMouseOver}>Hover me</button>
-        <button onClick={this.handleClick}>Click me</button>
+        <button
+          onClick={(event) => {
+            this.handleClick(event);
+          }}
+        >
+          Click me
+        </button>
         {/* {} to write js code */}
       </div>
     );
