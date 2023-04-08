@@ -1,10 +1,10 @@
 import React from "react";
 
-class UserInfo extends React.Component {
+class AddUserInfo extends React.Component {
   state = {
-    name: "Hieu Thanh",
-    address: "Hanoi",
-    age: 20,
+    name: "",
+    address: "",
+    age: "",
   };
 
   handleOnChangeInput = (event) => {
@@ -21,17 +21,11 @@ class UserInfo extends React.Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    this.props.handleAddNewUser(this.state);
   };
   render() {
     return (
       <div>
-        My name is {this.state.name}
-        <br />
-        My address is {this.state.address}
-        <br />
-        My age is {this.state.age}
-        <br />
         <form
           onSubmit={(event) => {
             this.handleOnSubmit(event);
@@ -66,9 +60,15 @@ class UserInfo extends React.Component {
 
           <button>Submit</button>
         </form>
+        My name is {this.state.name}
+        <br />
+        My address is {this.state.address}
+        <br />
+        My age is {this.state.age}
+        <br />
       </div>
     );
   }
 }
 
-export default UserInfo;
+export default AddUserInfo;

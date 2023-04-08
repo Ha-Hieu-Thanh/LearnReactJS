@@ -1,4 +1,5 @@
 import React from "react";
+import "./DisplayInfo.scss";
 
 class DisplayInfo extends React.Component {
   state = { isShowListUsers: true };
@@ -13,7 +14,7 @@ class DisplayInfo extends React.Component {
     // console.log(listUsers);
     return (
       // props => properties
-      <div>
+      <div className="display-info-container">
         <div>
           <button
             onClick={() => {
@@ -27,7 +28,10 @@ class DisplayInfo extends React.Component {
           <div>
             {listUsers.map((user) => {
               return (
-                <div key={user.id} class={+user.age >= 18 ? "green" : "red"}>
+                <div
+                  key={user.id}
+                  className={+user.age >= 18 ? "green" : "red"}
+                >
                   <p>Id: {user.id}</p>
                   <p>Name: {user.name}</p>
                   <p>Age: {user.age}</p>
@@ -37,7 +41,7 @@ class DisplayInfo extends React.Component {
               );
             })}
           </div>
-        )}
+        )}{" "}
       </div>
     );
   }
