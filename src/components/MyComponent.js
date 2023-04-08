@@ -6,20 +6,20 @@ import UserInfo from "./UserInfo";
 import DisplayInfo from "./DisplayInfo";
 
 class MyComponent extends React.Component {
+  // Moi khi cap nhat state thi ham render se duoc goi lai
+  state = {
+    listUsers: [
+      { id: 1, name: "Hieu Thanh 1", age: 31, address: "Thai Nguyen 1" },
+      { id: 2, name: "Hieu Thanh 2", age: 32, address: "Thai Nguyen 2" },
+      { id: 3, name: "Hieu Thanh 3", age: 33, address: "Thai Nguyen 3" },
+    ],
+  };
+
   render() {
-    const myInfo = ["Hieu Thanh", 30, "Thai Nguyen"];
-    const myAddress = "Thai Nguyen";
     return (
       <div>
         <UserInfo />
-        <DisplayInfo name="Ha Hieu Thanhhh" age="30" address="Dinh Hoa" />
-        <DisplayInfo name="Ha Hieu " age={50} address={myAddress} />
-        <DisplayInfo
-          name="Ha Hieu "
-          age={50}
-          address={myAddress}
-          myInfo={myInfo}
-        />
+        <DisplayInfo listUsers={this.state.listUsers} />
       </div>
     );
   }

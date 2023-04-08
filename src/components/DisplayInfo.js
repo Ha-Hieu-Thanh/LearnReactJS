@@ -3,13 +3,22 @@ import React from "react";
 class DisplayInfo extends React.Component {
   render() {
     // Destructuring
-    const { name, age, address } = this.props;
+    const { listUsers } = this.props;
+    console.log(listUsers);
     return (
       // props => properties
       <div>
-        <p>My name is {name}</p>
-        <p>My age is {age}</p>
-        <p>My address is {address}</p>
+        {listUsers.map((user) => {
+          return (
+            <div key={user.id}>
+              <p>Id: {user.id}</p>
+              <p>Name: {user.name}</p>
+              <p>Age: {user.age}</p>
+              <p>Address: {user.address}</p>
+              <hr />
+            </div>
+          );
+        })}
       </div>
     );
   }
