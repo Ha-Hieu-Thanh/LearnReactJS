@@ -46,6 +46,7 @@ import logo from "../logo.svg";
 const DisplayInfo = (props) => {
   // Destructuring
   const { listUsers } = props;
+  console.log(listUsers);
 
   const [isShowHideListUser, setIsShowHideListUser] = useState(true);
 

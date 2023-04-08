@@ -1,74 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 
-class AddUserInfo extends React.Component {
-  state = {
-    name: "",
-    address: "",
-    age: "",
+const AddUserInfo = (props) => {
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [age, setAge] = useState("");
+
+  const handleOnChangeInput = (event) => {
+    setName(event.target.value);
   };
 
-  handleOnChangeInput = (event) => {
-    this.setState({ name: event.target.value });
+  const handleOnChangeAge = (event) => {
+    setAge(event.target.value);
   };
 
-  handleOnChangeAge = (event) => {
-    this.setState({ age: event.target.value });
+  const handleOnChangeAddress = (event) => {
+    setAddress(event.target.value);
   };
 
-  handleOnChangeAddress = (event) => {
-    this.setState({ address: event.target.value });
-  };
-
-  handleOnSubmit = (event) => {
+  const handleOnSubmit = (event) => {
     event.preventDefault();
-    this.props.handleAddNewUser(this.state);
+    props.handleAddNewUser({
+      name: name,
+      address: address,
+      age: age,
+    });
   };
-  render() {
-    return (
-      <div>
-        <form
-          onSubmit={(event) => {
-            this.handleOnSubmit(event);
+
+  return (
+    <div>
+      <form
+        onSubmit={(event) => {
+          handleOnSubmit(event);
+        }}
+      >
+        <label>Your name: </label>
+        <input
+          type="text"
+          value={name}
+          onChange={(event) => {
+            handleOnChangeInput(event);
           }}
-        >
-          <label>Your name: </label>
-          <input
-            type="text"
-            value={this.state.name}
-            onChange={(event) => {
-              this.handleOnChangeInput(event);
-            }}
-          ></input>
+        ></input>
 
-          <label>Your age: </label>
-          <input
-            type="text"
-            value={this.state.age}
-            onChange={(event) => {
-              this.handleOnChangeAge(event);
-            }}
-          ></input>
+        <label>Your age: </label>
+        <input
+          type="text"
+          value={age}
+          onChange={(event) => {
+            handleOnChangeAge(event);
+          }}
+        ></input>
 
-          <label>Your address: </label>
-          <input
-            type="text"
-            value={this.state.address}
-            onChange={(event) => {
-              this.handleOnChangeAddress(event);
-            }}
-          ></input>
+        <label>Your address: </label>
+        <input
+          type="text"
+          value={address}
+          onChange={(event) => {
+            handleOnChangeAddress(event);
+          }}
+        ></input>
 
-          <button>Submit</button>
-        </form>
-        My name is {this.state.name}
-        <br />
-        My address is {this.state.address}
-        <br />
-        My age is {this.state.age}
-        <br />
-      </div>
-    );
-  }
-}
+        <button>Submit</button>
+      </form>
+      My name is {name}
+      <br />
+      My address is {address}
+      <br />
+      My age is {age}
+      <br />
+    </div>
+  );
+};
 
 export default AddUserInfo;
