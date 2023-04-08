@@ -16,7 +16,6 @@ class DisplayInfo extends React.Component {
     return (
       // props => properties
       <div className="display-info-container">
-        <img src={logo} />
         <div>
           <button
             onClick={() => {
@@ -34,10 +33,20 @@ class DisplayInfo extends React.Component {
                   key={user.id}
                   className={+user.age >= 18 ? "green" : "red"}
                 >
-                  <p>Id: {user.id}</p>
-                  <p>Name: {user.name}</p>
-                  <p>Age: {user.age}</p>
-                  <p>Address: {user.address}</p>
+                  <div>
+                    <p>Name: {user.name}</p>
+                    <p>Age: {user.age}</p>
+                    <p>Address: {user.address}</p>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => {
+                        this.props.handleDeleteUser(user.id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
                   <hr />
                 </div>
               );

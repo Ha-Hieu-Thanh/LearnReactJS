@@ -20,11 +20,21 @@ class MyComponent extends React.Component {
     this.setState({ listUsers: [new_obj, ...this.state.listUsers] });
   };
 
+  handleDeleteUser = (id) => {
+    let newListUsers = this.state.listUsers.filter((user) => user.id !== id);
+    this.setState({ listUsers: newListUsers });
+  };
+  // component = template + logic js
+  // template = html + css
+  // JSX co the in duoc string, number, khong hien thi duoc object, array, function, true, false, ...
   render() {
     return (
       <div>
         <AddUserInfo handleAddNewUser={this.handleAddNewUser} />
-        <DisplayInfo listUsers={this.state.listUsers} />
+        <DisplayInfo
+          listUsers={this.state.listUsers}
+          handleDeleteUser={this.handleDeleteUser}
+        />
       </div>
     );
   }
