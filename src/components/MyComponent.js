@@ -23,9 +23,6 @@ const MyComponent = (props) => {
     let newListUsers = listUsers.filter((user) => user.id !== id);
     setListUsers(newListUsers);
   };
-  // component = template + logic js
-  // template = html + css
-  // JSX co the in duoc string, number, khong hien thi duoc object, array, function, true, false, ...
 
   return (
     <div>
